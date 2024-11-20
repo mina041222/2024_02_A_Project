@@ -16,6 +16,10 @@ public class CraftingRecipe
     public string itemName;                     //제작할 아이템 이름
     public ItemType resultItem;                 //결과물
     public int resultAmount = 1;                //결과물 개수
+
+    public float HungerResotreAmount;
+    public float repairAmount;
+
     public ItemType[] requiredItems;            //필요한 재료들
     public int[] requiredAmounts;               //필요한 재료 개수 
 }
