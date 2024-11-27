@@ -55,4 +55,5 @@ public class FloatingTextManager : MonoBehaviour
         Destroy(textObj);
     }
 
+
 }

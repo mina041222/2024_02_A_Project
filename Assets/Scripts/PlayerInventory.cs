@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private SurvivalStats survivalStats;
+    private SurvivalStats survivalStats;                    //클래스 선언 
 
     //각각 아이템 개수를 저장하는 변수
     public int crystalCount = 0;                        //크리스탈 개수 
@@ -16,32 +16,30 @@ public class PlayerInventory : MonoBehaviour
     {
         survivalStats = GetComponent<SurvivalStats>();
     }
-
-    public void UseItem (ItemType itemType)
+    public void UseItem(ItemType itemType)
     {
-        if(GetItemCount(itemType) <= 0)
+        if (GetItemCount(itemType) <= 0)                     //해당 아이템이 있는지 확인
         {
             return;
         }
-        switch(itemType)
+        switch (itemType)
         {
             case ItemType.VeagetableStew:
                 RemoveItem(ItemType.VeagetableStew, 1);
-                survivalStats.EatFood(RecipeList.KitchenRecipes[0].HungerResotreAmount);
+                survivalStats.EatFood(RecipeList.KitchenRecipes[0].hungerRestoreAmount); //설정한 수치 동작
                 break;
-
             case ItemType.FruitSalad:
                 RemoveItem(ItemType.FruitSalad, 1);
-                survivalStats.EatFood(RecipeList.KitchenRecipes[1].HungerResotreAmount);
+                survivalStats.EatFood(RecipeList.KitchenRecipes[1].hungerRestoreAmount); //설정한 수치 동작
                 break;
-
             case ItemType.RepairKit:
                 RemoveItem(ItemType.RepairKit, 1);
-                survivalStats.EatFood(RecipeList.WorkbenchRecipes[0].repairAmount);
+                survivalStats.EatFood(RecipeList.WorkbenchRecipes[0].repairAmount); //설정한 수치 동작
                 break;
-
         }
     }
+
+
     //여러 아이템을 한꺼번에 획득
     public void AddItem(ItemType itemType, int amount)
     {
