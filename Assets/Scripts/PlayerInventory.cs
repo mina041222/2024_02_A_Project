@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private SurvivalStats survivalStats;                    //클래스 선언 
+     private SurvivalStats survivalStats;                    //클래스 선언 
 
     //각각 아이템 개수를 저장하는 변수
     public int crystalCount = 0;                        //크리스탈 개수 
@@ -24,8 +24,8 @@ public class PlayerInventory : MonoBehaviour
         }
         switch (itemType)
         {
-            case ItemType.VeagetableStew:
-                RemoveItem(ItemType.VeagetableStew, 1);
+            case ItemType.VeagetableStew:                           
+                RemoveItem(ItemType.VeagetableStew , 1);
                 survivalStats.EatFood(RecipeList.KitchenRecipes[0].hungerRestoreAmount); //설정한 수치 동작
                 break;
             case ItemType.FruitSalad:
@@ -55,7 +55,7 @@ public class PlayerInventory : MonoBehaviour
     public void AddItem(ItemType itemType)
     {
         //아이템 종류에 따른 다른 동작 수행 
-        switch (itemType)
+        switch(itemType)
         {
             case ItemType.Crystal:
                 crystalCount++;                 //크리스탈 개수 증가
@@ -76,7 +76,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public bool RemoveItem(ItemType itemType, int amount = 1)
+    public bool RemoveItem(ItemType itemType , int amount = 1)
     {
         //아이템 종류에 따른 다른 동작 수행 
         switch (itemType)
@@ -87,7 +87,7 @@ public class PlayerInventory : MonoBehaviour
                     crystalCount -= amount;
                     Debug.Log($"크리스탈 {amount} 사용 ! 현재 개수 : {crystalCount}");             //현재 크리스탈 개수 출력
                     return true;
-                }
+                }                
                 break;
             case ItemType.Plant:
                 if (crystalCount >= amount)         //가지고 있는 개수가 충분한지 확인
@@ -95,7 +95,7 @@ public class PlayerInventory : MonoBehaviour
                     crystalCount -= amount;
                     Debug.Log($"식물 {amount} 사용  ! 현재 개수 : {plantCount}");             //현재 식물 개수 출력
                     return true;
-                }
+                }              
                 break;
             case ItemType.Bush:
 
@@ -104,7 +104,7 @@ public class PlayerInventory : MonoBehaviour
                     bushCount -= amount;
                     Debug.Log($"수풀 {amount} 사용 ! 현재 개수 : {bushCount}");             //현재 수풀 개수 출력
                     return true;
-                }
+                }        
                 break;
 
             case ItemType.Tree:
@@ -113,7 +113,7 @@ public class PlayerInventory : MonoBehaviour
                     treeCount -= amount;
                     Debug.Log($"나무 {amount} 사용 ! 현재 개수 : {treeCount}");             //현재 나무 개수 출력
                     return true;
-                }
+                }               
                 break;
         }
         return false;
@@ -139,7 +139,7 @@ public class PlayerInventory : MonoBehaviour
     void Update()
     {
         //I 키를 눌렀을때 인벤토리 로그 내역을 보여줌
-        if (Input.GetKeyDown(KeyCode.I))
+        if(Input.GetKeyDown(KeyCode.I))
         {
             ShowInventory();
         }

@@ -21,7 +21,7 @@ public class SurvivalStats : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         //게임 시작시 스텟들은 최대인 상태로 시작 
         currentHunger = maxHunger;
         currentSuitDurability = maxSuitDurability;
@@ -32,8 +32,8 @@ public class SurvivalStats : MonoBehaviour
     {
         if (isGameOver || isPaused) return;
 
-        hungerTimer += Time.deltaTime;
-        if (hungerTimer >= 1.0f)                             //허기 체크 (1초마다)
+        hungerTimer += Time.deltaTime;  
+        if(hungerTimer >= 1.0f)                             //허기 체크 (1초마다)
         {
             currentHunger = Mathf.Max(0, currentHunger - hungerDecreaseRate);
             hungerTimer = 0.0f;
@@ -84,7 +84,7 @@ public class SurvivalStats : MonoBehaviour
 
     private void CheckDeath()                                       //플레이어 사망 처리 체크 함수 
     {
-        if (currentHunger <= 0 || currentSuitDurability <= 0)
+        if(currentHunger <= 0 || currentSuitDurability <= 0)
         {
             PlayerDeath();
         }
